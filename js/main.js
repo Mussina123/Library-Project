@@ -28,18 +28,45 @@ class UI {
         ];
 
         const books = StoredBooks;
+
+
+        books.forEach((book)=> UI.addBookToList(book)); 
+    }
+
+    static addBookToList(book){
+        const list = document.querySelector('#book-list');
+
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+        <td>${book.title}</td>
+        <td>${book.author}</td> 
+        <td>${book.pages}</td> 
+        <td>${book.read}</td>  
+        <td> <a href = '#' class = "btn btn-danger btn-sm delete">X </a> </td> 
+        
+        `;
+
+        list.appendChild(row);
+
     }
 }
-
-
-
-
 
 // Store class: Handles Local Storage 
 
 // Event: Display Books 
 
+document.addEventListener('DOMContentLoaded', UI.displayBooks)
+
 // Event: add a book 
+
+document.querySelector('#book-form').addEventListener('submit', (e) => {
+
+    //get form values
+const title = document.querySelector('#title').value;
+});
+
+
 
 // Event: remove a book 
 
