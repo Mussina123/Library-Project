@@ -1,74 +1,45 @@
-// Objects The Oden Project-- Library Project
+// Book Class: Represents a book 
 
-let myLibrary = [
-    {
-        title: 'Test1',
-        author: 'test1',
-        pages: 49, 
-        read: true
-    },
-    {
-        title: 'Test2',
-        author: 'test2',
-        pages: 4944, 
-        read: true
-    },
-    {
-        title: 'Test3',
-        author: 'test3',
-        pages: 42, 
-        read: false
-    }
-];
-
-
-class Book{
+class Book {
     constructor(title, author, pages, read){
-        this._title = title; 
-        this._author = author;
-        this._pages = pages;
-        this._read = read;
-    }
-    get title() {
-        return this._title;
-    }
-    get author(){
-        return this._author
-    }
-    get pages(){
-        return this._pages
-    }
-    get read(){
-        return this._read
-    }
-
-    info(){
-    return (`${this.title} by ${this.author}, ${this.pages}, ${this.read}`);
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read; 
     }
 }
-// addBookToLibrary(){
-//     myLibrary.push(theHobbit)
-// }
+// UI Class: Handle UI Tasks... book display... show alert.. 
 
-const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295 pages', 'not read yet')
+class UI {
+    static displayBooks() {
+        const StoredBooks = [
+            {
+                title: 'Book One', 
+                author: 'John Doe', 
+                pages: 432, 
+                read: 'I have not read' 
+            },
+            {
+                title: 'Book Two', 
+                author: 'John Dane', 
+                pages: 32, 
+                read: 'I have read book'  
+            }
+        ];
 
-console.log(theHobbit.info());
-
-
-let modal = document.getElementById('myModal');
-
-
-document.getElementById('newBook').addEventListener('click', openModal)
-
-function openModal(){
-    modal.style.display = "block";
+        const books = StoredBooks;
+    }
 }
 
-document.getElementById('addBookToLib').addEventListener('click', addBook);
 
-function addBook(){
-  const newAddedBook = document.createElement('div') 
-  newAddedBook.classList.add('newAddedBook')
-  newAddedBook.textContent = `Book title: ${this.title}`
-  
-}
+
+
+
+// Store class: Handles Local Storage 
+
+// Event: Display Books 
+
+// Event: add a book 
+
+// Event: remove a book 
+

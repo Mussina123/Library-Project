@@ -13,9 +13,52 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
   </head>
-  <p>halladf
-    
-  </p>
+
+<div class="container mt-4"></div>
+<h1 class="display-4 text-center"><i class="fas fa-book-open text-primary"></i>My <span class="text-primary"> Book </span>List </h1>
+<section id='main-box'>
+<form id="book-form">
+  <div class="form-group">
+    <label class ='label' for="title">Title</label>
+    <input type="text" id="title" 
+    class ='form-control'>
+  </div>
+  <div class="form-group">
+    <label class ='label'for="author">Author</label>
+    <input type="text" id="author" 
+    class ='form-control'>
+  </div>
+  <div class="form-group">
+    <label class ='label'for="pages"># of Pages</label>
+    <input type="text" id="pages" 
+    class ='form-control'>
+  </div>
+  <div class="form-group">
+    <label class ='label'for="read">Have you Read It? </label>
+    <input type="text" id="read" 
+    class ='form-control'>
+  </div>
+</section>
+  <input type="submit" value="Add Book" class = 'btn btn-primary btn-block'>
+</form>
+  
+<table class="table table-striped mt-5">
+<thead>
+<tr>
+  <th>
+    Title
+  </th>
+  <th>Author</th>
+  <th># of Pages</th>
+  <th>Heave you Read It?</th>
+</tr>
+</thead>
+<tbody id="book-list"></tbody>
+
+
+</table>
+
+
     <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
