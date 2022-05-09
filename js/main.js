@@ -12,23 +12,7 @@ class Book {
 
 class UI {
     static displayBooks() {
-        const StoredBooks = [
-            {
-                title: 'Book One', 
-                author: 'John Doe', 
-                pages: 432, 
-                read: 'I have not read' 
-            },
-            {
-                title: 'Book Two', 
-                author: 'John Dane', 
-                pages: 32, 
-                read: 'I have read book'  
-            }
-        ];
-
-        const books = StoredBooks;
-
+        const books = Store.getBooks();
 
         books.forEach((book)=> UI.addBookToList(book)); 
     }
@@ -85,6 +69,45 @@ class UI {
 
 // Store class: Handles Local Storage 
 
+class Store {
+    
+    static getBooks(){
+        let books; 
+        if (localStorage.getItem('books') === null ){
+            books = [];
+        }else {
+            books = JSON.parse(localStorage.getItem('books'));
+        }
+        return books;
+    } 
+
+    static addBook(book){
+        const books = Store.getBooks();
+
+        books.push(book);
+        
+        localStorage.setItem('books', JSON.stringify(books));
+}
+
+    static removeBook(pages){
+        const books = Store.getBooks();
+        books.forEach((book, index) => {
+            if(book.pages === pages){
+                books.splice(index, 1);
+            }
+        });
+
+        localStorage.setItem('books', JSON.stringify(books));
+    }
+
+}
+
+
+
+
+
+
+
 // Event: Display Books 
 
 document.addEventListener('DOMContentLoaded', UI.displayBooks)
@@ -124,13 +147,17 @@ console.log(book)
 // add book to list (UI)
 UI.addBookToList(book);
 
+// Add book to local storage
+
+Store.addBook(book);
+
 // Show sucess message 
 
 UI.showAlert('Book Added', 'success');
 
 // clear fields 
 
-UI.clearFields()
+UI.clearFields();
 
     }
 });
@@ -142,11 +169,14 @@ UI.clearFields()
 
 document.querySelector('#book-list').addEventListener('click', (e) => {
 
-    UI.deleteBook(e.target)
+    UI.deleteBook(e.target);
 
 
+    // Remove book from STore 
+
+    Store.removeBook((e.target.parentElement.previousElementSibling.previousElementSibling.textContent));
+    console.log((e.target.parentElement.previousElementSibling.previousElementSibling.textContent));
 // Event: remove a book 
-
 
 UI.showAlert('Book Removed', 'success');
 });
